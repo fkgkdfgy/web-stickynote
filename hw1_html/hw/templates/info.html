@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>项目进度</title>
+</head>
+<body>
+    <h1>
+        信息:
+    </h1>
+    <form method="post" action="/info" target="_self" >
+        <div>
+            ID:<input type="text" name="id" value="### ID_BLOCK"/>
+        </div>
+        <br>
+        <input type="submit" name="upload" value="上传">
+        <input type="submit" name="download" value="下载">
+        <input type="submit" name="add_new_line" value="加一行">
+        <br>
+        <br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th> 序号 </th>
+                    <th> 项目名 </th>
+                    <th> 进度 </th>
+                    <th> 状态 </th>
+                    <th> 历史 </th>
+                </tr>
+            </thead>
+            <tbody>
+                ### BODY_BLOCK
+            </tbody>
+        </table>
+    </form>
+</body>
+</html>
