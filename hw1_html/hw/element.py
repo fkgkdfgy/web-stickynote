@@ -33,3 +33,6 @@ class ProjectCols:
                 project_list.append("<tr> {} </tr>".format(p.to_html()))
             return " ".join(project_list)
     
+    def add_project(self,pro):
+        assert isinstance(pro,Project)
+        self.projects.append(pro)

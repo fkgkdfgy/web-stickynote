@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>帐号登录</title>
+  <style>
+
+    body{
+        background-color: yellow;
+    }
+
+    div{
+        border: 2px solid red;
+        margin: 2px 2px;
+    }
+
+    .main{
+        margin: 0 auto;
+        max-width: 800px;
+        border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+    }
+
+    .main .level_1_body{
+        margin: 10px 10px;
+        background-color: pink ;
+    }
+
+    .main #project_bar{
+        flex: 2;
+        display: flex;
+        max-width: 110px;
+        flex-direction: column;
+    }
+
+    .main #info_bar{
+        flex: 7;
+        min-height: 500px;
+        max-height: 600px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main #project_bar div{
+        background-color: aqua;
+    }
+
+    .main #project_bar .info{
+        flex: 5;
+        max-height: 800px;
+    }
+
+    .main #project_bar .settings{
+        height: 40px;
+        display: flex;
+    }
+
+    .settings{
+        background-color: blue;
+    }
+
+    .main #info_bar .recent{
+        flex: 1;
+    }
+    .main #info_bar .body{
+        flex: 3;
+        overflow: auto;
+    }
+
+    .main #info_bar .settings{
+        height: 40px;
+        display: flex;
+    }
+    
+    input{
+        height: 30px;
+        margin: auto auto;
+    }
+
+    .recent{
+        display: flex;
+        flex-direction: row;
+        max-height: 100px;
+    }
+    
+    .recent .task_block{
+        flex: 6;
+        background-color: green;
+        overflow: auto;
+    }
+
+    .recent .task_header{
+        flex: 1;
+        background-color: green;
+        overflow: auto;
+    }
+
+    .info div{
+        overflow: hidden;
+    }
+
+    .task_list{
+        overflow: auto;
+    }
+
+    .task {
+        overflow: hidden;
+    }
+
+  </style>
+</head>
+<body>
+    <script src="static/jquery-3.6.1.min.js" > </script>
+
+    <div class="main">
+        <div class="level_1_body" id="project_bar"> 
+            <div class="info">
+                <div> project1</div>
+                <div> project2</div>
+                <div> project3</div>
+                <div> project4</div>
+                <div> project4</div>
+                <div> project4</div>
+                <div> project4</div>
+                <div> project4</div>
+                <div> project4</div>
+                <div> project4</div>
+
+            </div>
+            <div class="settings">
+                <input type="button" placeholder="排序" value="排序">
+            </div>
+        </div>
+
+        <div class="level_1_body" id="info_bar">
+            <div class="recent">
+                <div class="task_header"> 今日代办: </div>
+                <div class="task_block">
+                    <div class="task_list" > 
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                    </div>
+                </div>
+                <div class="task_header"> 最近完成: </div>
+                <div class="task_block"> 
+                    <div class="task_list" > 
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                        <div class="single_task">123123</div>
+                    </div>
+                </div>
+            </div>
+            <div class="body">
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+                <div>12312</div>
+
+            </div> 
+            <div class="settings">
+                <input type="button"  value="显示">
+                <input type="button"  value="清空">
+                <input type="button"  value="添加新Project">
+                <input type="button"  value="内容修改">
+                <input type="button"  value="调整排序方式">
+                <input type="button"  value="上传">
+                <input type="button"  value="下载">
+
+            </div> 
+        </div>
+    </div>
+
+</body>
+</html>

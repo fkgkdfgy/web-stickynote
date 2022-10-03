@@ -1,4 +1,3 @@
-from unittest import result
 from flask import Flask, render_template, request
 from element import Project,ProjectCols
 
@@ -61,7 +60,7 @@ def info():
     elif 'add_new_line' in request.form:
         id = request.form['id']
         pc=id_manager[id]
-        pc.projects.append(Project())
+        pc.add_project(Project())
         return projectcol_to_html(id,id_manager[id])
     else:
         return "没有这个用户"
