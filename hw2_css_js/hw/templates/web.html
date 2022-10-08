@@ -113,21 +113,11 @@
   </style>
 </head>
 <body>
-    <script src="static/jquery-3.6.1.min.js" > </script>
 
     <div class="main">
         <div class="level_1_body" id="project_bar"> 
             <div class="info">
-                <div> project1</div>
-                <div> project2</div>
-                <div> project3</div>
-                <div> project4</div>
-                <div> project4</div>
-                <div> project4</div>
-                <div> project4</div>
-                <div> project4</div>
-                <div> project4</div>
-                <div> project4</div>
+
 
             </div>
             <div class="settings">
@@ -141,65 +131,133 @@
                 <div class="task_block">
                     <div class="task_list" > 
                         <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
+
                     </div>
                 </div>
                 <div class="task_header"> 最近完成: </div>
                 <div class="task_block"> 
                     <div class="task_list" > 
                         <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
-                        <div class="single_task">123123</div>
                     </div>
                 </div>
             </div>
             <div class="body">
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-                <div>12312</div>
-
+                
             </div> 
             <div class="settings">
                 <input type="button"  value="显示">
                 <input type="button"  value="清空">
-                <input type="button"  value="添加新Project">
-                <input type="button"  value="内容修改">
-                <input type="button"  value="调整排序方式">
+                <input type="button"  value="新建">
+                <input type="button"  value="修改">
+                <input type="button"  value="导入">
+                <input type="button"  value="导出">
                 <input type="button"  value="上传">
-                <input type="button"  value="下载">
+                <input type="button"  value="下载" onclick="download()">
 
             </div> 
         </div>
     </div>
 
+    <script>
+        function create_project(_content,_items=[])
+        {
+            var content={'content':_content , 'items': _items, 'status': 0};   
+            return content;
+        }
+        
+        function get_attr(target,head)
+        {
+            console.log(head)
+            console.log(target)
+
+            if(head in target)
+            {
+                return target[head];
+            }
+            return undefined;
+        }
+        
+        function set_attr(target,head,value)
+        {
+            if(head in target)
+            {
+                target[head]=value;
+                return true;
+            }
+            return false;
+        }
+        
+        function add_child(target,child)
+        {
+            target['items'].push(child);
+        }
+        
+        function get_child(target,index)
+        {
+            console.log("get_child_target:"+target)
+            if(index < get_attr(target,'items').length)
+            {
+                return get_attr(target,'items')[index];
+            }
+            else
+            {
+                return undefined;
+            }
+            
+        }
+        
+        function create_project_with_tree(content,level,child_num)
+        {
+            var node = create_project(content);
+            if (level ==0)
+            {
+                return node;
+            }
+            for(var i=0;i<child_num;i++)
+            {
+                add_child(node,create_project_with_tree(content+'_'+String(i),level-1,child_num));
+            }
+            return node;
+        }
+        
+        function create_project_with_tail(content,level)
+        {
+            return create_project_with_tree(content,level,1);
+        }
+        
+        function update_to_body_info()
+        {
+            
+        }
+        
+        function clear_body_info()
+        {
+
+        }
+
+        function update_to_plane(project)
+        {
+            // 更新 project_bar info
+            console.log("update_to_plane")
+            var bar_node = document.querySelector('#project_bar .info');
+            bar_node.innerHTML='';
+            for(var i =0;i<get_attr(project,'items').length;i++)
+            {
+                var node = document.createElement('div');
+                console.log(i)
+                var child = get_child(project,i);
+                node.innerHTML = get_attr(child,'content');
+                bar_node.appendChild(node);
+            }
+        }
+        
+        function download(){
+            console.log("download")
+            var manager = create_project('manager');
+            add_child(manager,create_project_with_tail('hw_first',3));
+            add_child(manager,create_project_with_tree('hw_second',3,3));
+            update_to_plane(manager);
+        }        
+    </script>
 </body>
 </html>
